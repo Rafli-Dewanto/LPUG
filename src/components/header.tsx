@@ -7,6 +7,7 @@ import React, { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "./ui/skeleton";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -61,32 +62,44 @@ export default function Header() {
           />
         </section>
 
-        <div
+        <motion.div
+          variants={{
+            "360": {
+              rotate: 360
+            }
+          }}
+          whileHover={'360'}
           onClick={() => setIsActive(!isActive)}
           className="mx-20 cursor-pointer"
         >
-          <RxHamburgerMenu />
-        </div>
+          <RxHamburgerMenu className='hover:text-purple-800' />
+        </motion.div>
       </nav>
 
-      {isActive ? (
-        <div className="flex flex-col items-center justify-center gap-y-4 pb-8">
-          <ul className="">
-            {navigationData.map((data, index) => (
-              <React.Fragment key={index}>
-                <li className="text-center text-base font-bold leading-9 text-gray-800">
-                  <Link href={data.hash}>{data.name}</Link>
-                </li>
-              </React.Fragment>
-            ))}
-          </ul>
-          <Link href={"https://ecourse-lpug.gunadarma.ac.id/login/index.php"}>
-            <Button className="group flex h-11 w-[6rem] items-center justify-center rounded-lg border-0 bg-purple-800 text-white transition-all hover:scale-105 hover:bg-purple-950 focus:outline-none active:scale-95">
-              Login
-            </Button>
-          </Link>
-        </div>
-      ) : null}
+      <AnimatePresence>
+        {isActive ? (
+          <motion.div
+            initial={{ x: -100 }}
+            animate={{ x: 0 }}
+            exit={{ x: -900 }}
+            className="flex flex-col items-center justify-center gap-y-4 pb-8">
+            <ul className="">
+              {navigationData.map((data, index) => (
+                <React.Fragment key={index}>
+                  <li className="text-center text-base font-bold leading-9 text-gray-800">
+                    <Link href={data.hash}>{data.name}</Link>
+                  </li>
+                </React.Fragment>
+              ))}
+            </ul>
+            <Link href={"https://ecourse-lpug.gunadarma.ac.id/login/index.php"}>
+              <Button className="group flex h-11 w-[6rem] items-center justify-center rounded-lg border-0 bg-purple-800 text-white transition-all hover:scale-105 hover:bg-purple-950 focus:outline-none active:scale-95">
+                Login
+              </Button>
+            </Link>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
