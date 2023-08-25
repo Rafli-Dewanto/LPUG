@@ -9,7 +9,7 @@ function Alur() {
       transition={{ duration: 1.2, delay: 0.4 }}
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="body-font scroll-mt-[26rem] lg:scroll-mt-24 overflow-hidden text-gray-600"
+      className="body-font scroll-mt-[26rem] overflow-hidden text-gray-600 lg:scroll-mt-24"
       id="alur"
     >
       <div id="alur" className="flex flex-col">

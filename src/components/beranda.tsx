@@ -14,7 +14,8 @@ function Beranda() {
       transition={{ duration: 1.2 }}
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex scroll-mt-96 flex-col-reverse items-center justify-center px-6 sm:mt-20 sm:scroll-mt-40 md:px-14 xl:flex-row xl:flex-nowrap xl:px-28"
+      className="flex scroll-mt-96 flex-col-reverse items-center justify-center px-6 
+      sm:mt-20 sm:scroll-mt-40 md:px-14 xl:flex-row xl:flex-nowrap xl:px-28"
       id="beranda"
     >
       {/* Left container */}
@@ -36,7 +37,11 @@ function Beranda() {
           Lembaga Pengembangan Universitas Gunadarma merupakan unit struktural
           yang berada di tingkat universitas.
         </p>
-        <Link href={'http://ugpedia.gunadarma.ac.id/content/141/1199/id/lembaga-pengembangan-universitas-gunadarma.html'}>
+        <Link
+          href={
+            "http://ugpedia.gunadarma.ac.id/content/141/1199/id/lembaga-pengembangan-universitas-gunadarma.html"
+          }
+        >
           <Button className="group flex h-11 w-40 items-center justify-center rounded-lg border-0 bg-purple-800 text-white transition-all hover:scale-105 hover:bg-purple-950 focus:outline-none active:scale-95">
             Lebih Lanjut
             <AiOutlineArrowRight className="ml-3 h-4 w-4 transition-all group-hover:translate-x-1 group-active:-translate-x-1" />

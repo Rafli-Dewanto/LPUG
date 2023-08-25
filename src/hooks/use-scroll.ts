@@ -18,5 +18,5 @@ export default function useScroll() {
     };
   }, []);
 
-  return { scrolling }
+  return { scrolling };
 }

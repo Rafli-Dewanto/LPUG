@@ -22,7 +22,10 @@ const fadeInAnimationVariants = {
 
 function Kursus() {
   return (
-    <section className="scroll-mt-72 lg:scroll-mt-24 overflow-hidden text-gray-600" id="kursus">
+    <section
+      className="scroll-mt-72 overflow-hidden text-gray-600 lg:scroll-mt-24"
+      id="kursus"
+    >
       <div>
         <div className="flex flex-row justify-between">
           <div className="mx-10 mb-4 mt-14 flex flex-col lg:mx-24 lg:mb-8 lg:mt-24">
@@ -55,7 +58,7 @@ function Kursus() {
                   once: true,
                 }}
               >
-                <div className="flex min-h-[12rem] sm:min-h-[16rem] flex-col items-center justify-center rounded-xl bg-white px-6 py-4 sm:py-8 shadow-lg transition-all duration-200 hover:scale-110">
+                <div className="flex min-h-[12rem] flex-col items-center justify-center rounded-xl bg-white px-6 py-4 shadow-lg transition-all duration-200 hover:scale-110 sm:min-h-[16rem] sm:py-8">
                   <Image
                     width={200}
                     height={200}

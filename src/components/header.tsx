@@ -11,12 +11,14 @@ import useScroll from "@/hooks/use-scroll";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
-  const { scrolling } = useScroll()
+  const { scrolling } = useScroll();
 
   return (
     <header
       id="#home"
-      className={`${scrolling ? 'drop-shadow-2xl' : ''} sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 md:px-16 lg:px-8`}
+      className={`${
+        scrolling ? "drop-shadow-2xl" : ""
+      } sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 md:px-16 lg:px-8`}
     >
       {/* Large screen nav */}
       <nav className="hidden justify-between bg-white xl:flex">
@@ -34,7 +36,10 @@ export default function Header() {
             {navigationData.map((data, index) => (
               <React.Fragment key={index}>
                 <li className="text-base font-bold text-gray-800">
-                  <Link className="text-gray-600 hover:text-gray-900" href={data.hash}>
+                  <Link
+                    className="text-gray-600 hover:text-gray-900"
+                    href={data.hash}
+                  >
                     {data.name}
                   </Link>
                 </li>
@@ -48,7 +53,6 @@ export default function Header() {
           </Link>
         </section>
       </nav>
-
 
       {/* Responsive */}
       <nav>
@@ -65,14 +69,14 @@ export default function Header() {
           <motion.div
             variants={{
               "360": {
-                rotate: 360
-              }
+                rotate: 360,
+              },
             }}
-            whileHover={'360'}
+            whileHover={"360"}
             onClick={() => setIsActive(!isActive)}
-            className="sm:mx-20 mx-10 cursor-pointer bg-purple-800 rounded-xl px-4 py-4 mb-3 sm:mb-0"
+            className="mx-10 mb-3 cursor-pointer rounded-xl bg-purple-800 px-4 py-4 sm:mx-20 sm:mb-0"
           >
-            <RxHamburgerMenu className='text-white' />
+            <RxHamburgerMenu className="text-white" />
           </motion.div>
         </div>
         <AnimatePresence>
@@ -82,7 +86,8 @@ export default function Header() {
               initial={{ x: -100 }}
               animate={{ x: 0 }}
               exit={{ x: -900 }}
-              className="flex flex-col items-center justify-center gap-y-4 pb-8 xl:hidden">
+              className="flex flex-col items-center justify-center gap-y-4 pb-8 xl:hidden"
+            >
               <ul className="">
                 {navigationData.map((data, index) => (
                   <React.Fragment key={index}>
@@ -92,7 +97,9 @@ export default function Header() {
                   </React.Fragment>
                 ))}
               </ul>
-              <Link href={"https://ecourse-lpug.gunadarma.ac.id/login/index.php"}>
+              <Link
+                href={"https://ecourse-lpug.gunadarma.ac.id/login/index.php"}
+              >
                 <Button className="group flex h-11 w-[6rem] items-center justify-center rounded-lg border-0 bg-purple-800 text-white transition-all hover:scale-105 hover:bg-purple-950 focus:outline-none active:scale-95">
                   Login
                 </Button>
@@ -101,7 +108,6 @@ export default function Header() {
           ) : null}
         </AnimatePresence>
       </nav>
-
     </header>
   );
 }
