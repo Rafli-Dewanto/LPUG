@@ -3,33 +3,44 @@
 import { navigationData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "./ui/skeleton";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <header
       id="#home"
-      className="body-font sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 md:px-16 lg:px-8"
+      className={`${scrolling ? 'drop-shadow-2xl' : ''} sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 md:px-16 lg:px-8`}
     >
       {/* Large screen nav */}
       <nav className="hidden justify-between bg-white xl:flex">
         <section className="pl-12 pt-4">
-          <Suspense
-            fallback={<Skeleton className="h-[24rem] w-[64rem] rounded-lg" />}
-          >
-            <Image
-              alt="lpug"
-              src={"https://lpug.gunadarma.ac.id/imagelanding/LPUG_FIX.png"}
-              width={208}
-              height={104}
-            />
-          </Suspense>
+          <Image
+            alt="lpug"
+            src={"https://lpug.gunadarma.ac.id/imagelanding/LPUG_FIX.png"}
+            width={208}
+            height={104}
+          />
         </section>
 
         <section className="flex items-center justify-center gap-x-6 px-8">

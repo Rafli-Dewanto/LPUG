@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
+import { Suspense } from "react";
 
 function Beranda() {
   return (
@@ -13,7 +14,7 @@ function Beranda() {
       transition={{ duration: 1.2 }}
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex scroll-mt-96 flex-col-reverse items-center justify-center px-6 sm:mt-20 sm:scroll-mt-40 md:px-14 lg:flex-row lg:flex-nowrap lg:px-28"
+      className="flex scroll-mt-96 flex-col-reverse items-center justify-center px-6 sm:mt-20 sm:scroll-mt-40 md:px-14 xl:flex-row xl:flex-nowrap xl:px-28"
       id="beranda"
     >
       {/* Left container */}
@@ -43,14 +44,18 @@ function Beranda() {
         </Link>
       </div>
 
-      <Image
-        quality={95}
-        width={1000}
-        height={1000}
-        className="h-auto w-full max-w-[30rem]"
-        src="/image/slider.png"
-        alt="slider"
-      />
+      <Suspense
+        fallback={<Skeleton className="h-[24rem] w-[64rem] rounded-lg" />}
+      >
+        <Image
+          quality={95}
+          width={500}
+          height={500}
+          className="h-auto w-full max-w-[30rem] "
+          src="/image/slider.png"
+          alt="slider"
+        />
+      </Suspense>
     </motion.section>
   );
 }
