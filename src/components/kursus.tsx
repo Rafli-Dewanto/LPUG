@@ -22,7 +22,7 @@ const fadeInAnimationVariants = {
 
 function Kursus() {
   return (
-    <section className="scroll-mt-24 overflow-hidden text-gray-600" id="kursus">
+    <section className="scroll-mt-72 lg:scroll-mt-24 overflow-hidden text-gray-600" id="kursus">
       <div>
         <div className="flex flex-row justify-between">
           <div className="mx-10 mb-4 mt-14 flex flex-col lg:mx-24 lg:mb-8 lg:mt-24">

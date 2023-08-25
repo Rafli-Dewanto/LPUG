@@ -50,7 +50,7 @@ const fadeInFromRight = {
 const Tentang = () => {
   return (
     <section
-      className="body-font scroll-mt-24 overflow-hidden text-gray-600"
+      className="body-font scroll-mt-96 lg:scroll-mt-24 overflow-hidden text-gray-600"
       id="tentang"
     >
       <div>

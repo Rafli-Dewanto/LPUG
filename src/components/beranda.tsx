@@ -13,7 +13,7 @@ function Beranda() {
       transition={{ duration: 1.2 }}
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex scroll-mt-80 flex-col-reverse items-center justify-center px-6 sm:mt-20 sm:scroll-mt-40 md:px-14 lg:flex-row lg:flex-nowrap lg:px-28"
+      className="flex scroll-mt-96 flex-col-reverse items-center justify-center px-6 sm:mt-20 sm:scroll-mt-40 md:px-14 lg:flex-row lg:flex-nowrap lg:px-28"
       id="beranda"
     >
       {/* Left container */}
@@ -44,8 +44,9 @@ function Beranda() {
       </div>
 
       <Image
-        width={200}
-        height={200}
+        quality={95}
+        width={1000}
+        height={1000}
         className="h-auto w-full max-w-[30rem]"
         src="/image/slider.png"
         alt="slider"
