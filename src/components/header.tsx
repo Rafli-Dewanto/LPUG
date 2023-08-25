@@ -3,7 +3,7 @@
 import { navigationData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,7 +18,7 @@ export default function Header() {
       id="#home"
       className={`${
         scrolling ? "drop-shadow-2xl" : ""
-      } sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 md:px-16 lg:px-8`}
+      } sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 transition-all delay-100 duration-300 md:px-16 lg:px-8`}
     >
       {/* Large screen nav */}
       <nav className="hidden justify-between bg-white xl:flex">

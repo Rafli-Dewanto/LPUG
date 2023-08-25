@@ -7,7 +7,7 @@ import Link from "next/link";
 import useScroll from "@/hooks/use-scroll";
 
 export default function FabArrowUp() {
-  const { scrolling } = useScroll();
+  const { scrolling } = useScroll(300);
 
   const buttonVariants = {
     hidden: {

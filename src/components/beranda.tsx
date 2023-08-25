@@ -15,7 +15,7 @@ function Beranda() {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       className="flex scroll-mt-96 flex-col-reverse items-center justify-center px-6 
-      sm:mt-20 sm:scroll-mt-40 md:px-14 xl:flex-row xl:flex-nowrap xl:px-28"
+  sm:mt-20 sm:scroll-mt-40 md:px-14 xl:flex-row xl:flex-nowrap xl:px-28"
       id="beranda"
     >
       {/* Left container */}
@@ -23,7 +23,7 @@ function Beranda() {
         id="beranda"
         className="grid grid-cols-1 items-center justify-center"
       >
-        <h1 className="text-left text-3xl font-semibold text-black sm:text-5xl">
+        <h1 className="text-left text-3xl font-semibold text-zinc-800 sm:text-5xl">
           Lembaga Pengembangan
         </h1>
         <h2
