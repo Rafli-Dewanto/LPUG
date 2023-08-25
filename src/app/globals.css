@@ -91,7 +91,7 @@ html {
   height: 2px;
   bottom: 0;
   left: 50%;
-  background: linear-gradient(to right, #ff78f0 0%, #f5ea5a 100%);
+  background: linear-gradient(to right, #6b21a8 0%, #ff6d18 100%);
   transition: all 0.2s ease-in-out;
   transform: translateX(-50%);
 }

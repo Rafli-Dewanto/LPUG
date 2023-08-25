@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { GoChevronDown } from "react-icons/go";
 import { kursus } from "@/lib/data";
 
 const fadeInAnimationVariants = {
@@ -43,7 +42,7 @@ function Kursus() {
           </div>
         </div>
 
-        {/* kursus */}
+        {/* card kursus */}
         <section className="grid grid-cols-1 gap-x-6 gap-y-5 px-16 py-4 lg:mx-8 lg:grid-cols-3">
           {kursus.map((k, idx) => (
             <React.Fragment key={idx}>
@@ -56,7 +55,7 @@ function Kursus() {
                   once: true,
                 }}
               >
-                <div className="flex min-h-[16rem] flex-col items-center justify-center rounded-xl bg-white px-6 py-8 shadow-lg transition-all duration-200 hover:scale-110">
+                <div className="flex min-h-[12rem] sm:min-h-[16rem] flex-col items-center justify-center rounded-xl bg-white px-6 py-4 sm:py-8 shadow-lg transition-all duration-200 hover:scale-110">
                   <Image
                     width={200}
                     height={200}
@@ -64,7 +63,6 @@ function Kursus() {
                     src={k.img}
                     alt="logo kursus"
                   />
-                  <GoChevronDown className="mt-4 h-[2rem] w-[2rem]" />
                 </div>
               </motion.div>
             </React.Fragment>

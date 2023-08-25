@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "./ui/skeleton";
+import Link from "next/link";
 
 function Beranda() {
   return (
@@ -25,7 +26,7 @@ function Beranda() {
         </h1>
         <h2
           className="bg-gradient-to-r from-purple-800 via-[#FF8136] to-[#ff6d18] 
-        bg-clip-text text-left text-3xl font-semibold text-transparent sm:via-[#ff9e0c] sm:text-5xl"
+        bg-clip-text text-left text-3xl font-semibold text-transparent sm:text-5xl"
         >
           Universitas Gunadarma
         </h2>
@@ -34,10 +35,12 @@ function Beranda() {
           Lembaga Pengembangan Universitas Gunadarma merupakan unit struktural
           yang berada di tingkat universitas.
         </p>
-        <Button className="group flex h-11 w-40 items-center justify-center rounded-lg border-0 bg-purple-800 text-white transition-all hover:scale-105 hover:bg-purple-950 focus:outline-none active:scale-95">
-          Lebih Lanjut
-          <AiOutlineArrowRight className="ml-3 h-4 w-4 transition-all group-hover:translate-x-1" />
-        </Button>
+        <Link href={'http://ugpedia.gunadarma.ac.id/content/141/1199/id/lembaga-pengembangan-universitas-gunadarma.html'}>
+          <Button className="group flex h-11 w-40 items-center justify-center rounded-lg border-0 bg-purple-800 text-white transition-all hover:scale-105 hover:bg-purple-950 focus:outline-none active:scale-95">
+            Lebih Lanjut
+            <AiOutlineArrowRight className="ml-3 h-4 w-4 transition-all group-hover:translate-x-1 group-active:-translate-x-1" />
+          </Button>
+        </Link>
       </div>
 
       <Image
