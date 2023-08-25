@@ -7,25 +7,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
+import useScroll from "@/hooks/use-scroll";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
-  const [scrolling, setScrolling] = useState(false);
-
-  const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setScrolling(true);
-    } else {
-      setScrolling(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const { scrolling } = useScroll()
 
   return (
     <header
