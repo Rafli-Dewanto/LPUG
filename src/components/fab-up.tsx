@@ -36,7 +36,7 @@ export default function FabArrowUp() {
           exit="hidden"
           className="fixed bottom-6 right-6"
         >
-          <Link href={"#home"}>
+          <Link href={"#"}>
             <motion.div
               className="grid h-12 w-12 place-items-center rounded-2xl border border-white bg-[#ffa26c] text-sm"
               whileHover={{ scale: 1.1 }}
