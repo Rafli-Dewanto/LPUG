@@ -13,8 +13,10 @@ datasource db {
 model Kelulusan {
   id String @id @default(uuid())
   nama String
-  nim String
+  nim String @unique
   periode Int
+  kursus String
+  status String
 
   @@map("kelulusan")
 }

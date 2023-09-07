@@ -4,51 +4,66 @@ import { prisma } from "@/lib/db";
 export async function GET(request: NextRequest) {
   const userQuery = request.nextUrl.searchParams.get("query");
   if (!userQuery) {
-    return NextResponse.json(
-      { error: "Query parameter 'query' is required." },
-      { status: 400 }
-    );
+    return NextResponse.json({
+      status: "OK",
+      data: []
+    })
   }
 
-  try {
-    const data = await prisma.kelulusan.findMany({
-      where: {
-        OR: [
-          {
-            nama: {
-              contains: userQuery,
-            },
-          },
-          {
-            nim: {
-              contains: userQuery,
-            },
-          },
-        ],
-      },
-    });
-
-    const numericQuery = Number(userQuery);
-
-    if (!isNaN(numericQuery)) {
-      const numericData = await prisma.kelulusan.findMany({
+  const periodeQuery = Number(userQuery);
+  // Jika user query bilangan
+  if (!isNaN(periodeQuery)) {
+    try {
+      const data = await prisma.kelulusan.findMany({
         where: {
-          periode: numericQuery,
+          periode: periodeQuery,
+        },
+      });
+      return NextResponse.json({
+        status: "OK",
+        data,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return NextResponse.json(
+        { error: "An error occurred while fetching data." },
+        { status: 500 },
+      );
+    }
+  } else {
+    try {
+      const data = await prisma.kelulusan.findMany({
+        where: {
+          OR: [
+            {
+              nama: {
+                contains: userQuery,
+              },
+            },
+            {
+              nim: {
+                contains: userQuery,
+              },
+            },
+            {
+              kursus: {
+                contains: userQuery,
+              },
+            },
+          ],
         },
       });
 
-      data.push(...numericData);
+      return NextResponse.json({
+        status: "OK",
+        data,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return NextResponse.json(
+        { error: "An error occurred while fetching data." },
+        { status: 500 },
+      );
     }
-
-    return NextResponse.json({
-      status: "OK",
-      data,
-    });
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return NextResponse.json(
-      { error: "An error occurred while fetching data." },
-      { status: 500 }
-    );
   }
 }

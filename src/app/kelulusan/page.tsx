@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
     Table,
     TableBody,
@@ -11,31 +11,11 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
-import type { Kelulusan } from '@prisma/client';
+import clsx from 'clsx';
+import useKelulusan from '@/hooks/use-kelulusan';
 
 export default function Page() {
-    const [query, setQuery] = useState("");
-    const [data, setData] = useState<Kelulusan[]>([]);
-    const [defaultData, setDefaultData] = useState<Kelulusan[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (query !== "") {
-                    const response = await fetch(`/api/kelulusan?query=${query}`);
-                    const result = await response.json();
-                    setData(result.data);
-                } else {
-                    const response = await fetch(`/api/filterUser?query=65`);
-                    const result = await response.json();
-                    setDefaultData(result.data);
-                }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-        fetchData()
-    }, [query]);
+    const { setQuery, kelulusan } = useKelulusan()
 
     return (
         <section className='min-h-screen px-12 bg-white'>
@@ -48,33 +28,33 @@ export default function Page() {
             <Table className='overflow-x-scroll'>
                 <TableCaption>Kelulusan Peserta</TableCaption>
                 <TableHeader>
-                    <TableRow>
-                        <TableHead>No</TableHead>
-                        <TableHead>Nama</TableHead>
-                        <TableHead>NIM</TableHead>
-                        <TableHead className="text-right">Periode</TableHead>
+                    <TableRow className='bg-purple-800 hover:bg-purple-900'>
+                        <TableHead className='text-white'>No</TableHead>
+                        <TableHead className='text-white'>Nama</TableHead>
+                        <TableHead className='text-white'>NIM</TableHead>
+                        <TableHead className='text-white'>Kursus</TableHead>
+                        <TableHead className="text-white">Periode</TableHead>
+                        <TableHead className="text-white">Status</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {query && query.length > 0 ?  (
-                        data.map((item, index) => (
-                            <TableRow key={item.id}>
-                                <TableCell className="font-medium">{index + 1}</TableCell>
-                                <TableCell>{item.nama}</TableCell>
-                                <TableCell>{item.nim}</TableCell>
-                                <TableCell className="text-right">{item.periode}</TableCell>
-                            </TableRow>
-                        ))
-                    ) : (
-                        defaultData.map((item, index) => (
-                            <TableRow key={item.id}>
-                                <TableCell className="font-medium">{index + 1}</TableCell>
-                                <TableCell>{item.nama}</TableCell>
-                                <TableCell>{item.nim}</TableCell>
-                                <TableCell className="text-right">{item.periode}</TableCell>
-                            </TableRow>
-                        ))
-                    )}
+                    {kelulusan.map((item, index) => (
+                        <TableRow key={item.id}>
+                            <TableCell className="font-medium">{index + 1}</TableCell>
+                            <TableCell>{item.nama}</TableCell>
+                            <TableCell>{item.nim}</TableCell>
+                            <TableCell>{item.kursus.toUpperCase()}</TableCell>
+                            <TableCell className="">{item.periode}</TableCell>
+                            <TableCell
+                                className={clsx("font-semibold", {
+                                    "text-green-500": item.status.toLowerCase() === "lulus",
+                                    "text-red-500": item.status.toLowerCase() === "tidak_lulus",
+                                    "text-yellow-400": item.status.toLowerCase() === "sedang_mengikuti"
+                                })}>
+                                {item.status.replace("_", " ").toUpperCase()}
+                            </TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </section>
