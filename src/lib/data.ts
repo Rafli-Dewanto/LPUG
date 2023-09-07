@@ -17,7 +17,7 @@ export const navigationData = [
   },
   {
     name: "Pengumuman",
-    hash: "#pengumuman",
+    hash: "/kelulusan",
   },
   {
     name: "Kontak",
