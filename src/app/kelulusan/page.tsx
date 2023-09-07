@@ -38,20 +38,20 @@ export default function Page() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {kelulusan.map((item, index) => (
-                        <TableRow key={item.id}>
+                    {kelulusan.map((data, index) => (
+                        <TableRow className='even:bg-slate-50 even:bg-opacity-70 hover:bg-slate-100' key={data.id}>
                             <TableCell className="font-medium">{index + 1}</TableCell>
-                            <TableCell>{item.nama}</TableCell>
-                            <TableCell>{item.nim}</TableCell>
-                            <TableCell>{item.kursus.toUpperCase()}</TableCell>
-                            <TableCell className="">{item.periode}</TableCell>
+                            <TableCell>{data.nama}</TableCell>
+                            <TableCell>{data.nim}</TableCell>
+                            <TableCell>{data.kursus.toUpperCase()}</TableCell>
+                            <TableCell className="">{data.periode}</TableCell>
                             <TableCell
                                 className={clsx("font-semibold", {
-                                    "text-green-500": item.status.toLowerCase() === "lulus",
-                                    "text-red-500": item.status.toLowerCase() === "tidak_lulus",
-                                    "text-yellow-400": item.status.toLowerCase() === "sedang_mengikuti"
+                                    "text-green-500": data.status.toLowerCase() === "lulus",
+                                    "text-red-500": data.status.toLowerCase() === "tidak_lulus",
+                                    "text-yellow-400": data.status.toLowerCase() === "sedang_mengikuti"
                                 })}>
-                                {item.status.replace("_", " ").toUpperCase()}
+                                {data.status.replace("_", " ").toUpperCase()}
                             </TableCell>
                         </TableRow>
                     ))}
