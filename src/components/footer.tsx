@@ -1,113 +1,94 @@
+import Link from "next/link";
 import Image from "next/image";
+import { TfiLinkedin } from "react-icons/tfi";
 
 function Footer() {
   return (
-    <footer className="bg-[#42194E]" id="kontak">
-      <div className="mx-6 max-w-xl pb-4 pt-16 md:max-w-full md:px-8 lg:mx-12 lg:max-w-5xl lg:px-8 xl:max-w-screen-2xl">
-        <div className="grid gap-0 space-x-4 lg:grid-cols-3 lg:space-x-20">
-          <div className="justify-left col-span-1 flex items-center">
-            <Image
-              width={427}
-              height={212}
-              src="/image/logofooter.png"
-              className="h-auto w-full max-w-lg "
-              alt="logo"
-            />
-          </div>
-
-          <div className="ml-10 flex w-72 flex-col lg:mx-auto">
-            <div>
-              <div className="mb-2 flex flex-col lg:mb-4">
-                <h2 className="title-font text-md font-bold text-white lg:text-xl">
-                  Alamat
-                </h2>
-                <span className="mt-1 h-1 w-14 rounded-none bg-orange-100 lg:w-16"></span>
-              </div>
-              <p className="text-md font-extralight tracking-wider text-white lg:text-xl">
-                Jl. Margonda Raya No.100, Pondok Cina, Beji, Kota Depok, Jawa
-                Barat 16424
-              </p>
-            </div>
-
-            <div className="my-8 mb-2 flex flex-col lg:mb-4">
-              <h2 className="title-font text-md font-bold text-white lg:text-xl">
-                UG Direktori
-              </h2>
-              <span className="mt-1 h-1 w-24 rounded-none bg-orange-100 lg:w-28"></span>
-            </div>
-            <nav className="text-md flex list-none flex-col space-y-1 font-extralight tracking-wider text-white lg:space-y-4 lg:text-xl">
-              <a
-                className="underline-from-center"
-                href="https://baak.gunadarma.ac.id/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                BAAK
-              </a>
-              <a
-                className="underline-from-center"
-                href="https://studentsite.gunadarma.ac.id/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                STUDENTSITE
-              </a>
-              <a
-                className="underline-from-center"
-                href="https://library.gunadarma.ac.id/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LIBRARY
-              </a>
-              <a
-                className="underline-from-center"
-                href="https://v-class.gunadarma.ac.id/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                V-CLASS
-              </a>
-            </nav>
-          </div>
-
-          <div className="col-span-1 mt-8 lg:mt-0 lg:max-w-xl">
-            <div className="mb-2 flex flex-col lg:mb-4">
-              <h2 className="title-font text-md font-bold text-white lg:text-xl">
-                Kontak
-              </h2>
-              <span className="mt-1 h-1 w-14 rounded-none bg-orange-100 lg:w-16"></span>
-            </div>
-            <nav className="text-md list-none font-extralight tracking-wider text-white lg:text-xl">
-              <p>Phone : 062 - 21 - 78881070</p>
-              <p className="mt-4">Fax : 062 - 21 - 78881071</p>
-              <p className="mt-4">E-mail : lpug@gunadarma.ac.id</p>
-            </nav>
-          </div>
+    <footer
+      className="w-full bg-[#42194E] px-4 pb-24 pt-12 sm:px-12 sm:py-16 md:py-24"
+      id="kontak"
+    >
+      <section className="grid grid-cols-1 gap-x-12 gap-y-4 sm:grid-cols-3">
+        {/* top row / left col */}
+        <div className="grid grid-cols-1 content-center justify-items-center">
+          <Image
+            width={427}
+            height={212}
+            src="/image/logofooter.png"
+            className="h-auto w-full max-w-lg"
+            alt="logo"
+          />
         </div>
-        <div className="py-6">
-          <div className="flex flex-col">
-            <span className="h-0.5 w-full rounded-none bg-white"></span>
-            <div className="mt-4 flex flex-row justify-between text-white">
-              <p className="text-sm lg:text-xl">© 2023 LPUG</p>
-              <div className="flex items-center justify-center space-x-3">
-                <Image
-                  width={36}
-                  height={34}
-                  src="/image/linkedin.svg"
-                  alt="linkedin"
-                />
-                <a
-                  href="https://www.linkedin.com/company/lembaga-pengembangan-universitas-gunadarma/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm font-bold underline lg:text-xl"
-                >
-                  Linkedin
-                </a>
-              </div>
-            </div>
+
+        {/* 2nd col / mid row (alamat & ug direktori) */}
+        <div className="mt-2 grid max-w-md grid-cols-1 gap-y-8 px-4">
+          {/* alamat */}
+          <div>
+            <h2 className="font-bold text-white lg:text-xl">Alamat</h2>
+            <span className="block h-1 w-14 bg-[#FDC89E] lg:w-16"></span>
+            <p className="mt-4 font-extralight tracking-wider text-white lg:text-xl">
+              Jl. Margonda Raya No.100, Pondok Cina, Beji, Kota Depok, Jawa
+              Barat 16424
+            </p>
           </div>
+          {/* ug direktori */}
+          <nav className="flex flex-col space-y-2 font-extralight tracking-wider text-white lg:space-y-4 lg:text-xl">
+            <h2 className="font-bold text-white lg:text-xl">UG Direktori</h2>
+            <span className="!mt-0 block h-1 w-24 bg-[#FDC89E] lg:w-32"></span>
+            <Link
+              className="underline-from-center !mt-[1.3rem]"
+              href={"https://baak.gunadarma.ac.id"}
+            >
+              BAAK
+            </Link>
+            <Link
+              className="underline-from-center"
+              href={"https://studentsite.gunadarma.ac.id"}
+            >
+              STUDENTSITE
+            </Link>
+            <Link
+              className="underline-from-center"
+              href={"https://library.gunadarma.ac.id"}
+            >
+              LIBRARY
+            </Link>
+            <Link
+              className="underline-from-center"
+              href={"https://v-class.gunadarma.ac.id"}
+            >
+              V-CLASS
+            </Link>
+          </nav>
+        </div>
+
+        {/* 3rd col / bottom row */}
+        <div className="mt-2 flex flex-col px-4">
+          <h2 className="font-bold text-white lg:text-xl">Kontak</h2>
+          <span className="h-1 w-16 bg-[#FDC89E]"></span>
+          <article className="mt-4 font-extralight text-white lg:text-xl">
+            <p>Phone : 062 - 21 - 78881070</p>
+            <p className="mt-4">Fax : 062 - 21 - 78881071</p>
+            <p className="mt-4">E-mail : lpug@gunadarma.ac.id</p>
+          </article>
+        </div>
+      </section>
+      <div className="mt-12 h-[0.10rem] w-full bg-slate-200 px-8"></div>
+
+      {/* copyrights & linkedin */}
+      <div className="mt-12 flex justify-between">
+        <p className="text-white lg:text-xl">&copy; 2023 LPUG</p>
+        {/* Linkedin container */}
+        <div className="flex items-center justify-center space-x-3 sm:py-4">
+          <TfiLinkedin className="h-8 w-8 rounded-md bg-[#0B66C2] p-1 text-white" />
+          <Link
+            href="https://www.linkedin.com/company/lembaga-pengembangan-universitas-gunadarma/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-bold text-white hover:underline lg:text-xl"
+          >
+            Linkedin
+          </Link>
         </div>
       </div>
     </footer>
