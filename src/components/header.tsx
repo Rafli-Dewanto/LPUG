@@ -40,7 +40,7 @@ export default function Header() {
                 <li className="text-base font-bold text-gray-800">
                   <Link
                     className="text-gray-600 hover:text-gray-900"
-                    href={data.hash}
+                    href={`/${data.hash}`}
                   >
                     {data.name}
                   </Link>

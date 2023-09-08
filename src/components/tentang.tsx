@@ -68,7 +68,7 @@ const Tentang = () => {
             <h1 className="mb-1 text-xl font-bold lg:mb-4 lg:text-3xl">
               Tentang
             </h1>
-            <span className="ml-6 h-1 w-7 rounded-none bg-orange-100 lg:h-2 lg:w-14"></span>
+            <span className="mx-1 h-1 w-28 bg-[#FDC89E] lg:h-2 lg:w-36"></span>
           </div>
         </div>
         <div className="mx-8 mb-0 flex flex-wrap justify-between lg:mx-24 lg:mb-10">

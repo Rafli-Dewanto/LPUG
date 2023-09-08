@@ -13,7 +13,7 @@ export default function useKelulusan() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }, [query])
+  }, [query]);
 
   useEffect(() => {
     fetchData();

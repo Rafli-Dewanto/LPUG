@@ -19,7 +19,9 @@ export default function Page() {
 
   return (
     <section className="min-h-screen bg-white px-12">
-      <h1 className="text-2xl font-bold">PENCARIAN DATA KELULUSAN KURSUS</h1>
+      <h1 className="text-2xl font-bold text-black text-opacity-80">
+        PENCARIAN DATA KELULUSAN KURSUS
+      </h1>
       <div className="mb-10 mt-10 flex flex-col gap-x-4 gap-y-2 sm:flex-row">
         <Input
           onChange={(e) => setQuery(e.target.value)}
