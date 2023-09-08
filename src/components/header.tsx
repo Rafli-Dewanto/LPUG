@@ -16,8 +16,9 @@ export default function Header() {
   return (
     <header
       id="#home"
-      className={`${scrolling ? "drop-shadow-2xl" : ""
-        } sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 transition-all delay-100 duration-300 md:px-16 lg:px-8`}
+      className={`${
+        scrolling ? "drop-shadow-2xl" : ""
+      } sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 transition-all delay-100 duration-300 md:px-16 lg:px-8`}
     >
       {/* Large screen nav */}
       <nav className="hidden justify-between bg-white xl:flex">

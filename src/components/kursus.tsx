@@ -32,7 +32,7 @@ function Kursus() {
             <h1 className="mb-1 text-xl font-bold lg:mb-4 lg:text-3xl">
               Kursus
             </h1>
-            <span className="ml-4 h-1 w-7 rounded-none bg-orange-100 lg:ml-6 lg:h-2 lg:w-14"></span>
+            <span className="mx-1 h-1 w-24 bg-[#FDC89E] lg:h-2 lg:w-32"></span>
           </div>
           <div className="flex flex-col">
             <Image

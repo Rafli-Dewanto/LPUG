@@ -13,11 +13,11 @@ export async function GET(request: NextRequest) {
   try {
     let data;
     const periodeQuery = parseInt(userQuery);
-    
+
     if (!isNaN(periodeQuery) && String(periodeQuery).length !== 8) {
       data = await prisma.kelulusan.findMany({
         where: {
-          periode: periodeQuery
+          periode: periodeQuery,
         },
       });
     } else {
