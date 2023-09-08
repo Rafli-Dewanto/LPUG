@@ -6,8 +6,8 @@ export async function GET(request: NextRequest) {
   if (!userQuery) {
     return NextResponse.json({
       status: "OK",
-      data: []
-    })
+      data: [],
+    });
   }
 
   const periodeQuery = Number(userQuery);
