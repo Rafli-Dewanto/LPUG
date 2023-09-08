@@ -10,29 +10,39 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const periodeQuery = Number(userQuery);
-  // Jika user query bilangan
-  if (!isNaN(periodeQuery)) {
-    try {
-      const data = await prisma.kelulusan.findMany({
+  try {
+    let data;
+    const periodeQuery = parseInt(userQuery);
+    
+    if (!isNaN(periodeQuery)) {
+      data = await prisma.kelulusan.findMany({
         where: {
-          periode: periodeQuery,
+          OR: [
+            {
+              nama: {
+                contains: userQuery,
+              },
+            },
+            {
+              nim: {
+                contains: userQuery,
+              },
+            },
+            {
+              periode: {
+                equals: periodeQuery,
+              },
+            },
+            {
+              kursus: {
+                contains: userQuery,
+              },
+            },
+          ],
         },
       });
-      return NextResponse.json({
-        status: "OK",
-        data,
-      });
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      return NextResponse.json(
-        { error: "An error occurred while fetching data." },
-        { status: 500 },
-      );
-    }
-  } else {
-    try {
-      const data = await prisma.kelulusan.findMany({
+    } else {
+      data = await prisma.kelulusan.findMany({
         where: {
           OR: [
             {
@@ -53,17 +63,17 @@ export async function GET(request: NextRequest) {
           ],
         },
       });
-
-      return NextResponse.json({
-        status: "OK",
-        data,
-      });
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      return NextResponse.json(
-        { error: "An error occurred while fetching data." },
-        { status: 500 },
-      );
     }
+
+    return NextResponse.json({
+      status: "OK",
+      data,
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return NextResponse.json(
+      { error: "An error occurred while fetching data." },
+      { status: 500 },
+    );
   }
 }
