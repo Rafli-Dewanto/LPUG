@@ -17,28 +17,7 @@ export async function GET(request: NextRequest) {
     if (!isNaN(periodeQuery)) {
       data = await prisma.kelulusan.findMany({
         where: {
-          OR: [
-            {
-              nama: {
-                contains: userQuery,
-              },
-            },
-            {
-              nim: {
-                contains: userQuery,
-              },
-            },
-            {
-              periode: {
-                equals: periodeQuery,
-              },
-            },
-            {
-              kursus: {
-                contains: userQuery,
-              },
-            },
-          ],
+          periode: periodeQuery
         },
       });
     } else {
