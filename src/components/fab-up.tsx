@@ -36,7 +36,7 @@ export default function FabArrowUp() {
           exit="hidden"
           className="fixed bottom-16 right-6"
         >
-          <Link href={"#"}>
+          <button onClick={() => window.scrollTo(0, 0)}>
             <motion.div
               className="grid h-12 w-12 place-items-center rounded-2xl border border-white bg-[#ffa26c] text-sm"
               whileHover={{ scale: 1.1 }}
@@ -44,7 +44,7 @@ export default function FabArrowUp() {
             >
               <AiOutlineArrowUp className="text-2xl" />
             </motion.div>
-          </Link>
+          </button>
         </motion.div>
       )}
     </AnimatePresence>
