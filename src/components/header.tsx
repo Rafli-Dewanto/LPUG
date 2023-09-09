@@ -18,10 +18,10 @@ export default function Header() {
       id="#home"
       className={`${
         scrolling ? "drop-shadow-2xl" : ""
-      } sticky top-0 z-20 w-full bg-white pt-4 font-bold text-gray-600 transition-all delay-100 duration-300 md:px-16 lg:px-8`}
+      } sticky top-0 z-20 w-full bg-white backdrop-blur-xl bg-opacity-10 font-bold text-gray-600 transition-all delay-100 duration-300`}
     >
       {/* Large screen nav */}
-      <nav className="hidden justify-between bg-white xl:flex">
+      <nav className="hidden justify-between bg-white backdrop-blur-xl bg-opacity-80 xl:flex">
         <section className="pl-12 pt-4">
           <Link href={"/"}>
             <Image

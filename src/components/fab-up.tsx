@@ -34,7 +34,7 @@ export default function FabArrowUp() {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="fixed bottom-6 right-6"
+          className="fixed bottom-16 right-6"
         >
           <Link href={"#"}>
             <motion.div
