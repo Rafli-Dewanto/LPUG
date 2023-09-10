@@ -80,7 +80,9 @@ function Footer() {
         <p className="text-white lg:text-xl">&copy; 2023 LPUG</p>
         {/* Linkedin container */}
         <div className="flex items-center justify-center space-x-3 sm:py-4">
-          <Link href={`https://www.linkedin.com/company/lembaga-pengembangan-universitas-gunadarma/`}>
+          <Link
+            href={`https://www.linkedin.com/company/lembaga-pengembangan-universitas-gunadarma/`}
+          >
             <TfiLinkedin className="h-8 w-8 rounded-md bg-[#0B66C2] p-1 text-white" />
           </Link>
           <Link
