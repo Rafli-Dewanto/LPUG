@@ -4,10 +4,29 @@ import { prisma } from "@/lib/db";
 export async function GET(request: NextRequest) {
   const userQuery = request.nextUrl.searchParams.get("query");
   if (!userQuery) {
-    return NextResponse.json({
-      status: "OK",
-      data: [],
-    });
+    try {
+      const data = await prisma.kelulusan.findMany({
+        orderBy: [
+          {
+            periode: "desc",
+          },
+          {
+            kursus: "asc",
+          },
+        ],
+        take: 90,
+      });
+      return NextResponse.json({
+        status: "OK",
+        data,
+      });
+    } catch (error) {
+      console.error(error);
+      return NextResponse.json(
+        { error: "An error occurred while fetching data." },
+        { status: 500 },
+      );
+    }
   }
 
   try {
@@ -19,6 +38,14 @@ export async function GET(request: NextRequest) {
         where: {
           periode: periodeQuery,
         },
+        orderBy: [
+          {
+            periode: "desc",
+          },
+          {
+            kursus: "asc",
+          },
+        ],
       });
     } else {
       data = await prisma.kelulusan.findMany({
@@ -41,6 +68,7 @@ export async function GET(request: NextRequest) {
             },
           ],
         },
+        take: 40,
       });
     }
 
