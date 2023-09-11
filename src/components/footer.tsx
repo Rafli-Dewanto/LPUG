@@ -5,7 +5,7 @@ import { TfiLinkedin } from "react-icons/tfi";
 function Footer() {
   return (
     <footer
-      className="w-full bg-[#42194E] px-4 pb-24 pt-12 sm:px-12 sm:py-16 md:py-24"
+      className="w-full bg-[#42194E] px-4 pb-8 pt-12 sm:px-12 md:py-14"
       id="kontak"
     >
       <section className="grid grid-cols-1 gap-x-12 gap-y-4 sm:grid-cols-3">
@@ -80,7 +80,11 @@ function Footer() {
         <p className="text-white lg:text-xl">&copy; 2023 LPUG</p>
         {/* Linkedin container */}
         <div className="flex items-center justify-center space-x-3 sm:py-4">
-          <TfiLinkedin className="h-8 w-8 rounded-md bg-[#0B66C2] p-1 text-white" />
+          <Link
+            href={`https://www.linkedin.com/company/lembaga-pengembangan-universitas-gunadarma/`}
+          >
+            <TfiLinkedin className="h-8 w-8 rounded-md bg-[#0B66C2] p-1 text-white" />
+          </Link>
           <Link
             href="https://www.linkedin.com/company/lembaga-pengembangan-universitas-gunadarma/"
             target="_blank"

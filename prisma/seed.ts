@@ -1,0 +1,390 @@
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+
+const sampleData = [
+  {
+    nama: "John Doeeee",
+    nim: "12345671",
+    periode: 61,
+    kursus: "sap",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Alicsse Johnson",
+    nim: "23456339",
+    periode: 63,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Jan3e Smith",
+    nim: "87644321",
+    periode: 62,
+    kursus: "cisco",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Sarawwh Davis",
+    nim: "60893843",
+    periode: 61,
+    kursus: "sap",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Michael Jdohnson",
+    nim: "56189012",
+    periode: 66,
+    kursus: "oracle",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Eva Brodwn",
+    nim: "57295728",
+    periode: 65,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Katie Cortez",
+    nim: "34828472",
+    periode: 64,
+    kursus: "sap",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Mabel Benson",
+    nim: "34823372",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Pearl Keller",
+    nim: "14823372",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Mabel Benson",
+    nim: "24823372",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Ophelia Erickson",
+    nim: "44823372",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Sean Bryant",
+    nim: "44523372",
+    periode: 66,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Blanche Wagner",
+    nim: "99823372",
+    periode: 65,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Elijah Kim",
+    nim: "00823372",
+    periode: 65,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Frederick Craig",
+    nim: "00023372",
+    periode: 66,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Isaac Young",
+    nim: "34289012",
+    periode: 66,
+    kursus: "oracle",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Maeve Burnett",
+    nim: "67895671",
+    periode: 64,
+    kursus: "sap",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Bartholomew Banks",
+    nim: "67586291",
+    periode: 61,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Nola Armstrong",
+    nim: "99834567",
+    periode: 65,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Ryan Kelley",
+    nim: "32190785",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Gita Best",
+    nim: "45302814",
+    periode: 63,
+    kursus: "sap",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Gabby Norris",
+    nim: "27809430",
+    periode: 65,
+    kursus: "oracle",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Ryder Ortiz",
+    nim: "51904783",
+    periode: 61,
+    kursus: "cisco",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Harvey Fisher",
+    nim: "28491378",
+    periode: 63,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Farrah Ferguson",
+    nim: "68029035",
+    periode: 62,
+    kursus: "sap",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Kari Wilkerson",
+    nim: "45913820",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Mitchell Boyd",
+    nim: "81295467",
+    periode: 63,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Lian Chang",
+    nim: "90256714",
+    periode: 66,
+    kursus: "oracle",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Porter Wilson",
+    nim: "28674501",
+    periode: 61,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Brent Pena",
+    nim: "93845276",
+    periode: 65,
+    kursus: "sap",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Rachel Bass",
+    nim: "76505912",
+    periode: 62,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Martin Grant",
+    nim: "51293867",
+    periode: 63,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Brynn Li",
+    nim: "29385019",
+    periode: 66,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Rajah Petersen",
+    nim: "69201845",
+    periode: 65,
+    kursus: "oracle",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Orson Donaldson",
+    nim: "66129385",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Coral Burns",
+    nim: "45389012",
+    periode: 62,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Ariana Mayo",
+    nim: "84265890",
+    periode: 65,
+    kursus: "oracle",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Joelle Levine",
+    nim: "83501928",
+    periode: 64,
+    kursus: "cisco",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Malcolm Mcmahon",
+    nim: "46089123",
+    periode: 61,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Selma Gates",
+    nim: "89216540",
+    periode: 65,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "May Vasquez",
+    nim: "89263487",
+    periode: 62,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Lilly Freeman",
+    nim: "76145892",
+    periode: 63,
+    kursus: "sap",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Bronson Law",
+    nim: "91570362",
+    periode: 66,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Carla Norman",
+    nim: "45678923",
+    periode: 64,
+    kursus: "cisco",
+    status: "sedang_mengikuti",
+  },
+  {
+    nama: "Adah Mccullough",
+    nim: "18765432",
+    periode: 65,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Roscoe Howard",
+    nim: "39087162",
+    periode: 63,
+    kursus: "oracle",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Orla Cunningham",
+    nim: "87654321",
+    periode: 62,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Jarred Mccarthy",
+    nim: "76543218",
+    periode: 61,
+    kursus: "sap",
+    status: "tidak_lulus",
+  },
+  {
+    nama: "Paki Holland",
+    nim: "89263450",
+    periode: 65,
+    kursus: "oracle",
+    status: "lulus",
+  },
+  {
+    nama: "Evan Hoffman",
+    nim: "45673289",
+    periode: 64,
+    kursus: "cisco",
+    status: "lulus",
+  },
+  {
+    nama: "Jesse Holder",
+    nim: "90499255",
+    periode: 66,
+    kursus: "sap",
+    status: "lulus",
+  },
+  {
+    nama: "Stefanie Dyer",
+    nim: "82897631",
+    periode: 62,
+    kursus: "oracle",
+    status: "sedang_mengikuti",
+  },
+];
+
+async function main() {
+  try {
+    await prisma.kelulusan.deleteMany({});
+    for (const data of sampleData) {
+      await prisma.kelulusan.create({
+        data,
+      });
+    }
+
+    console.log("Sample data seeded successfully");
+  } catch (error) {
+    console.error("Error seeding sample data:", error);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+main().then(async () => {
+  await prisma.$disconnect();
+});
