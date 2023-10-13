@@ -11,12 +11,12 @@ datasource db {
 }
 
 model Kelulusan {
-  id String @id @default(uuid())
-  nama String
-  nim String @unique
+  id String @id @db.VarChar(50) @default(uuid())
+  nama String @db.VarChar(100)
+  nim String @unique @db.VarChar(20)
   periode Int
-  kursus String
-  status String
+  kursus String @db.VarChar(15)
+  status String @db.VarChar(30)
 
   @@map("kelulusan")
 }

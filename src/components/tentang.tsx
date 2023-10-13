@@ -1,21 +1,10 @@
 "use client";
 
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
+import { about } from "@/lib/data";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  lazyLoad: true,
-  fade: true,
-};
+import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
 
 const fadeInFromLeft = {
   initial: {
@@ -48,6 +37,16 @@ const fadeInFromRight = {
 };
 
 const Tentang = () => {
+  const [page, setPage] = useState(0);
+
+  function handleSetPage() {
+    if (page === 0) {
+      setPage(1);
+    } else {
+      setPage(0);
+    }
+  }
+
   return (
     <section
       className="body-font scroll-mt-96 overflow-hidden text-gray-600 lg:scroll-mt-24"
@@ -99,35 +98,21 @@ const Tentang = () => {
             }}
             className="w-full lg:w-1/2"
           >
-            <Slider {...settings}>
-              <div className="h-full rounded-xl border-2 border-gray-100 bg-white p-4 lg:p-12">
-                <p className="text-left text-sm leading-loose tracking-wider lg:text-xl">
-                  Lembaga Pengembangan Universitas Gunadarma merupakan unit
-                  struktural yang berada di tingkat universitas. Tugas dan
-                  tanggung jawabnya adalah melakukan koordinasi pelaksanaan
-                  kegiatan pendidikan dan pelatihan berbasis TIK yang
-                  diperuntukkan untuk mahasiswa di luar kegiatan perkuliahan di
-                  kelas, atau untuk masyarakat umum dengan berkoordinasi dengan
-                  unit terkait.
-                </p>
+            <div className="rounded-xl border-2 border-gray-100 bg-white p-4 lg:p-12">
+              <p className="text-left text-sm leading-6 tracking-wider sm:leading-3 lg:text-xl">
+                {about[page]}
+              </p>
+              <div className="mt-6 flex items-center justify-center gap-x-6">
+                <AiFillLeftCircle
+                  onClick={handleSetPage}
+                  className={`h-6 w-6`}
+                />
+                <AiFillRightCircle
+                  onClick={handleSetPage}
+                  className={`h-6 w-6`}
+                />
               </div>
-              <div className="h-full rounded-xl border-2 border-gray-100 bg-white p-4 lg:p-12">
-                <p className="text-left text-sm leading-loose tracking-wider lg:text-xl">
-                  Lembaga Pengembangan ini membawahi lembaga pengembangan di
-                  tingkat fakultas, yaitu Lembaga Pengembangan Komputerisasi
-                  (LePKom) , Lembaga Pengembangan Teknologi (LePTek), Lembaga
-                  Pengembangan Manajemen dan AKuntansi (LePMA), Lembaga
-                  Pengembangan Sastra dan Bahasa (LePSaB), Lembaga Pengembangan
-                  Teknik Sipil dan Perencanaan (LePTSP), Lembaga Pengembangan
-                  Psikologi (LePPsi). Selain kegiatan pelatihan bersertifikasi
-                  nasional, lembaga pengembangan juga melaksanakan kegiatan
-                  pelatihan bersertifikat Regional dan Internasional. Pelatihan
-                  bersertifikat Regional yang diselenggarakan adalah pelatihan
-                  Value Plus, sedangkan pelatihan bersertifikat Internasional
-                  adalah Oracle, Cisco, Java dan SAP.
-                </p>
-              </div>
-            </Slider>
+            </div>
           </motion.div>
         </div>
       </div>
