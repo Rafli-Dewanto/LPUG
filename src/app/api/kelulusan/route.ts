@@ -3,8 +3,21 @@ import { prisma } from "@/lib/db";
 
 export async function GET(request: NextRequest) {
   const userQuery = request.nextUrl.searchParams.get("query");
+  const pageQuery = request.nextUrl.searchParams.get("page");
+  const page = Number(pageQuery);
+  const perPage = 20;
+
+  if (isNaN(page) || page < 1) {
+    return NextResponse.json(
+      { error: "Invalid page number." },
+      { status: 400 }, // Bad Request
+    );
+  }
+
   if (!userQuery) {
     try {
+      const totalRows = await prisma.kelulusan.count();
+      const totalPages = Math.ceil(totalRows / perPage);
       const data = await prisma.kelulusan.findMany({
         orderBy: [
           {
@@ -14,11 +27,15 @@ export async function GET(request: NextRequest) {
             kursus: "asc",
           },
         ],
-        take: 90,
+        take: perPage,
+        skip: (page - 1) * perPage,
       });
       return NextResponse.json({
         status: "OK",
         data,
+        metadata: {
+          totalPages,
+        },
       });
     } catch (error) {
       console.error(error);
@@ -30,51 +47,65 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    let data;
-    const periodeQuery = parseInt(userQuery);
+    const userQueryStr = String(userQuery);
+    const periodeQuery = parseInt(userQueryStr);
+    const isPeriode = !isNaN(periodeQuery) && userQueryStr.length !== 8;
 
-    if (!isNaN(periodeQuery) && String(periodeQuery).length !== 8) {
-      data = await prisma.kelulusan.findMany({
-        where: {
-          periode: periodeQuery,
-        },
-        orderBy: [
+    let data;
+    let whereCondition;
+
+    if (isPeriode) {
+      whereCondition = {
+        periode: periodeQuery,
+      };
+    } else {
+      whereCondition = {
+        OR: [
           {
-            periode: "desc",
+            nama: {
+              contains: userQueryStr,
+            },
           },
           {
-            kursus: "asc",
+            nim: {
+              contains: userQueryStr,
+            },
+          },
+          {
+            kursus: {
+              contains: userQueryStr,
+            },
           },
         ],
-      });
-    } else {
-      data = await prisma.kelulusan.findMany({
-        where: {
-          OR: [
-            {
-              nama: {
-                contains: userQuery,
-              },
-            },
-            {
-              nim: {
-                contains: userQuery,
-              },
-            },
-            {
-              kursus: {
-                contains: userQuery,
-              },
-            },
-          ],
-        },
-        take: 40,
-      });
+      };
     }
+
+    const totalRows = await prisma.kelulusan.count({
+      where: whereCondition,
+    });
+
+    const totalPages = Math.ceil(totalRows / perPage);
+
+    data = await prisma.kelulusan.findMany({
+      where: whereCondition,
+      orderBy: [
+        {
+          periode: "desc",
+        },
+        {
+          kursus: "asc",
+        },
+      ],
+      take: perPage,
+      skip: (page - 1) * perPage,
+    });
 
     return NextResponse.json({
       status: "OK",
       data,
+      metadata: {
+        totalPages,
+      },
     });
   } catch (error) {
     console.error("Error fetching data:", error);
