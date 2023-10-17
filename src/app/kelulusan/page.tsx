@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import {
   Table,
   TableBody,
@@ -36,10 +36,16 @@ export default function Page() {
       <h1 className="text-2xl font-bold text-black text-opacity-80">
         PENCARIAN DATA KELULUSAN KURSUS
       </h1>
-      <div className="mb-10 mt-10 flex flex-col gap-x-4 gap-y-2 sm:flex-row">
+      <div className="my-10 flex w-full flex-col gap-x-4 gap-y-2 sm:flex-row">
         <Input
           onChange={handleChange}
-          className="w-full border-input focus-visible:outline-purple-800 sm:w-[30%]"
+          className="
+          w-full border-input
+          focus-visible:outline-purple-800
+          sm:w-[50%]
+          md:w-[40%]
+          lg:w-[30%]
+          "
           type="text"
           placeholder="Nama / NIM / Periode"
         />

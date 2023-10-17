@@ -12,6 +12,7 @@
   "dependencies": {
     "@etchteam/next-pagination": "^3.5.5",
     "@prisma/client": "5.2.0",
+    "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/node": "20.5.4",
     "@types/react": "18.2.21",
