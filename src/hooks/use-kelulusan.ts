@@ -9,7 +9,8 @@ export default function useKelulusan() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useAtom(pageAtom);
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPages, setTotalPages] = useAtom(totalPagesAtom);
+  // const [totalPages, setTotalPages] = useAtom(totalPagesAtom);
+  const [totalPages, setTotalPages] = useState(1);
   const [kelulusan, setKelulusan] = useState<Kelulusan[]>([]);
 
   const fetchData = useCallback(async () => {

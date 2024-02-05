@@ -1,27 +1,27 @@
 export const navigationData = [
   {
     name: "Beranda",
-    hash: "#beranda",
+    hash: "/#beranda",
   },
   {
     name: "Alur Pendaftaran",
-    hash: "#alur",
+    hash: "/#alur",
   },
   {
     name: "Materi Kursus",
-    hash: "#kursus",
+    hash: "/#kursus",
   },
   {
     name: "Tentang",
-    hash: "#tentang",
+    hash: "/#tentang",
   },
   {
     name: "Pengumuman",
-    hash: "#pengumuman",
+    hash: "/#pengumuman",
   },
   {
     name: "Kontak",
-    hash: "#kontak",
+    hash: "/#kontak",
   },
 ] as const;
 

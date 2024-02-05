@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
+// dynamic API nextjs -> https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
+export const dynamic = 'force-dynamic'
 export async function GET(request: NextRequest) {
   const userQuery = request.nextUrl.searchParams.get("query");
   const pageQuery = request.nextUrl.searchParams.get("page");
@@ -9,8 +11,8 @@ export async function GET(request: NextRequest) {
 
   if (isNaN(page) || page < 1) {
     return NextResponse.json(
-      { error: "Invalid page number." },
-      { status: 400 }, // Bad Request
+      { error: "Invalid page number or page query was not provided." },
+      { status: 400 },
     );
   }
 
